@@ -1,8 +1,8 @@
 # Salesforce_Excercise
 
->This document will explain the requirements and all relevant to complete the salesforce programming excersice you have been given
+This document will explain the requirements and all relevant to complete the salesforce programming excersice you have been given
 
-Rules
+####Rules
 > The rules for this challenge are as follows. Have fun. Read the user story and create a solution the meets the acceptance criteria. It's perferable that you create a new developer org. Your code will need to be submited through github. Other than that the entire challenge design is up to you. 
 
 ###Background
@@ -13,7 +13,7 @@ Rules
 >As a sales user I need to import these accounts using the salesforce import utility and have a page that I can go get all the associated opportunities and links to the account using the account Name and then apply the discount. Once they are imported I would like them to show up on the page with The Account Name, Opportunity Name, Location, and Price.
 
 ###Accepantce Criteria
-* All 500 accounts will be imported
+> * All 500 accounts will be imported
 * Every account will have to have an associated opportunity retrieved from the supplier (via supplied REST API) 
 * Using a trigger when a new opportunity is created a discount of 20% should be applied to the quote amount
 * A new field will be added to the opportunity that will contain the quote
