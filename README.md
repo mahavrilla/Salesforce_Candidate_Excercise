@@ -13,7 +13,7 @@ This document will explain the requirements and all relevant to complete the sal
 >As a sales user I need to import these accounts using the salesforce import utility and have a page that I can go get all the associated opportunities and links to the account using the account Name and then apply the discount. Once they are imported I would like them to show up on the page with The Account Name, Opportunity Name, Location, and Price.
 
 ###Accepantce Criteria
-> * All 500 accounts will be imported
+> * All 500 accounts will be imported (via supplied challengeAccounts.csv)
 * Every account will have to have an associated opportunity retrieved from the supplier (via supplied REST API) 
 * Using a trigger when a new opportunity is created a discount of 20% should be applied to the quote amount
 * A new field will be added to the opportunity that will contain the quote
