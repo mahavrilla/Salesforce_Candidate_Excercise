@@ -9,4 +9,4 @@ Add story here
 ###Accepantce Criteria
 
 ###Other docs
-Read `[Rest Api Documentation](SalesforceRestApi.md)`
+Read [Rest Api Documentation](SalesforceRestApi.md)
