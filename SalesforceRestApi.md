@@ -1,14 +1,12 @@
 ###RESTful API for SFDC / Force.com Developer Project
 
-_Thanks to [json-server](https://github.com/typicode/json-server)_ for making it so easy to setup.
+Root:
+https://superman-caves.herokuapp.com/
 
+These HTTP verbs are supported.
 ```
 GET    /opportunities
 GET    /opportunities/1
-POST   /opportunities
-PUT    /opportunities/1
-PATCH  /opportunities/1
-DELETE /opportunities/1
 ```
 
 ```
