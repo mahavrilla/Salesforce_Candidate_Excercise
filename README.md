@@ -8,5 +8,5 @@ Add story here
 
 ###Accepantce Criteria
 
-###Other docs
-Read [Rest Api Documentation](SalesforceRestApi.md)
+###Api Documentation
+[Rest Api Documentation](SalesforceRestApi.md)
