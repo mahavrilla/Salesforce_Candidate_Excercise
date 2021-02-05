@@ -1,0 +1,80 @@
+public with sharing class AlphaAccount {
+
+    public Map<String,List<Account>> alphaAccList = new Map<String,List<Account>>();
+    public String letterToGet{ get; set; }
+
+    public AlphaAccount() {
+        List<Account> accs = [SELECT Name FROM Account ORDER BY Name asc];
+        letterToGet = '';
+
+        for(Account acc: accs){
+            String letter = '';
+            letter = acc.Name; // Grab the account name
+            letter = letter.substring(0,1); //Take only the first character
+            List<Account> acclist = new List<Account>();
+
+            if (alphaAccList.containsKey(letter))
+            {
+                acclist =  alphaAccList.get(letter); // return a list of Accounts for the given letter, i.e. 'A'
+            }
+
+            acclist.add(acc);
+
+            alphaAccList.put(letter, acclist); //Add the Account to the list
+        }
+    }
+
+    public Map<String,List<Account>> getAlphaMap()
+    {
+        return alphaAccList;
+    }
+
+    public List<String> getAlphabet(){
+        list<String> alpha = new List<String>(alphaAccList.keySet());
+        return alpha;
+    }
+    
+    	// Pass in the endpoint to be used using the string url
+        public static void getOpps() {
+                
+        // Create list of Opportunities for bulk DML insert
+        list<Opportunity> opps = new list<Opportunity>();
+        
+        // Instantiate a new http object
+        Http h = new Http();
+
+        // Instantiate a new HTTP request, specify the method (GET) as well as the endpoint
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('https://superman-caves.herokuapp.com/opportunities');
+        req.setMethod('GET');
+
+        // Send the request, and return a response
+        HttpResponse res = h.send(req);
+        res.getBody();
+        
+        JSONParser parser = JSON.createParser(res.getBody());
+        while (parser.nextToken() != null) {
+                if (parser.getCurrentToken() == JSONToken.START_ARRAY) {
+                while (parser.nextToken() != null) {
+                        if (parser.getCurrentToken() == JSONToken.START_OBJECT) {                        
+                        Opportunity opp = (Opportunity)parser.readValueAs(Opportunity.class);
+                        
+                        String s1 = JSON.serialize(opp);
+                        String s2 = s1.replace('"Id":', '"Number":');
+                        
+                        Opportunity newOpp = (Opportunity)JSON.deserialize(s2, Opportunity.class);
+                        newOpp.closeDate = System.today() + 30;
+                        
+                        // Add each new Opportunity to the list of Opportunities
+                        opps.add(newOpp);
+                        
+                        parser.skipChildren();
+                        }
+                }
+                }
+        }
+        
+        insert opps;
+        
+    }
+}

@@ -1,0 +1,23 @@
+<apex:page controller="AlphaAccount" tabStyle="Account">
+    <apex:form >
+        <apex:pageBlock >
+        
+            <apex:pageblockSection >
+                <apex:commandButton action="{!getOpps}" value="Import Opportunities"/>
+            </apex:pageblockSection>
+            
+            <apex:repeat value="{!alphabet}" var="letter">
+            
+                <apex:pageBlockSection title="{!letter}" columns="2">
+                    <apex:repeat value="{!alphaMap[letter]}" var="acc">
+                            <apex:outputLink value="/{!acc.id}">
+                                <apex:outputText value="{!acc.Name}" label=""/>
+                            </apex:outputLink>
+                    </apex:repeat>
+                </apex:pageBlockSection>
+                
+            </apex:repeat> 
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
